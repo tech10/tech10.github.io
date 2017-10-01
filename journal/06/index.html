@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Variety Network | Journal Entries | Changes to the Site and A New RSS Feed</title>
+<meta name="description" content="My articles, pages, and content about technology.">
+<meta name="keywords" content="technology, servers, articles">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<header class="header cf">
+<a class="logotext" href="/index.html">Variety Network</a>
+<nav>
+<h5>Navigation</h5>
+<ul class="menu cf">
+<li><a  href="/tt_tos/index.html">TeamTalk terms of service</a></li>
+<li><a  class="active" href="/journal/index.html">Journal Entries</a>
+<ul class="submenu">
+<li><a  href="/journal/01/index.html">My Spiritual Journey And The Technology Behind The Site</a></li>
+<li><a  href="/journal/02/index.html">The Comment And Content Management Systems</a></li>
+<li><a  href="/journal/03/index.html">TeamTalk Updates And Other Things</a></li>
+<li><a  href="/journal/04/index.html">Updates After A Long Time</a></li>
+<li><a  href="/journal/05/index.html">Exposure To Your Faults Is Difficult, Thunder Storms Are Great</a></li>
+<li><a  class="active" href="/journal/06/index.html">Changes to the Site and A New RSS Feed</a></li>
+<li><a  href="/journal/07/index.html">The Cost of Honesty</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5>Page Hierarchy</h5>
+<ul class="menu cf">
+<li><a href="/index.html">Home &rsaquo;</a></li>
+<li><a href="/journal/index.html">Journal Entries &rsaquo;</a></li>
+<li><a class="active" href="/journal/06/index.html">Changes to the Site and A New RSS Feed &rsaquo;</a></li>
+</ul>
+</nav>
+</header>
+<main class="main">
+<h1>Changes to the Site and A New RSS Feed</h1>
+<ul class="meta cf">
+<li><b>Author:</b> Blake G</li>
+<li><b>Published:</b> <time datetime="2015-09-08T02:54:00-06:00">Tuesday, September 8, 2015  02:54 AM</time></li>
+<li><b>Modified:</b> <time datetime="2015-09-08T02:57:00-06:00">Tuesday, September 8, 2015  02:57 AM</time></li>
+</ul>
+<div class="text">
+<p>Why, good morning! Sometimes I enjoy these late night postings, and changing the site a little, which I'll go through below.</p>
+<h2>The RSS Feed</h2>
+<p>Yep, I've got that, too. Just take the number off the page here and you'll see the link. If that page is removed, which is a matter of deleting the folder or renaming it to something different, it won't display anymore. So, head on down to the Journal Entries page in the navigation link, and you'll see it. Now, you can stay up to date with the latest, greatest posts I make!</p>
+<h2>Changes to the Footer</h2>
+<p>As you know from looking at the footer at the bottom of the page, there's a few different things that I have. One is a text page counter that keeps track of how many visitors there have been since the date the counter was initialized, that is, when the counters data was first written. I also have a hosted by Kirby, the copyright notice, and a page generation time. I've made a few different modifications to some of the internals and I'll go through them here, since I doubt any of it's a security risk.</p>
+<h3>The Page Counter</h3>
+<p>Previously, my page counter stored its files outside the web directory. Basically, that means that no one visiting the site would have the ability to see the files my simple counter creates. Unfortunately, this presented a bit of a portability problem, too. To mitigate that difficulty, I decided to rewrite the counter so that it stores its files within the same directories my content is in. This opens things up to the possibility of people accessing the counters files from the outside, but I'm not storing any information that would be risky. The only thing stored is the time the counter was first initialized, and a number indicating the number of visitors there have been to the page. It's a simple json file which works well with php.</p>
+<p>And, to add a little note, I don't get too many page hits on my site. Well, that's okay.</p>
+<h3>The Page Generator</h3>
+<p>Page generated in 0.017 seconds.</p>
+<p>No? Or is that not quite what you were expecting? Perhaps something more like this.</p>
+<p>Page generated in 0.007 seconds.</p>
+<p>Well, here's the reason for the change. The entire idea behind the page generator was to calculate how long, within a slight margin of error, it took for the page to load from beginning to end. Previously, I used what's called snippets to perform both tasks, to store the initial page loading value, then calculate and display the time it took for the page to load. Unfortunately, this didn't take into account how long it was taking to load the various files, classes, functions, and other such things from the Kirby content management system itself, so I modified the index file to set the initial starting micro time from php, rather than having the snippet do that. Basically, this means the page generation time is more accurate. However, it's not quite as accurate as I'd like it to be, but you can't have everything you want and take into account the time it takes for the data to be sent to the web server, the web server to execute the php module and parse the file through its engine, send all the data back to you, and finally close the connection. But hey, I'm probably off by, at most, 0.2 seconds, right? That's surely good enough.</p>
+<h2>Sitemap</h2>
+<p>Yep, I've got a sitemap back, and you can find it at my domain, slash sitemap.xml. So here's an example.<br />
+<a href="http://www.vrnw.org/sitemap.xml">http://www.vrnw.org/sitemap.xml</a><br />
+Google indexes it once again, and so can you!</p>
+<h2>The Dynamic robots.txt</h2>
+<p>You've all heard of robots.txt, right? It's used to allow or disallow certain things from bots. Of course, some aren't nice and disregard it, and sometimes, little traps are put in place for them. They sure don't like it since, sometimes, they can get ban.</p>
+<p>Anyhow, Kirby has a plugin available for it to generate the robots.txt file, just like the one I use for the sitemap, it's just a little different. Well, I've got that, too, and it works pretty well if I say so myself.</p>
+<h2>PHP Version Changes</h2>
+<p>PHP 7.0.0 will be coming out soon. Don't believe me? <a href="http://php.net/ChangeLog-7.php">Check out the change log.</a> The best feature is increased performance, and I've updated my server to use PHP 7.0.0 RC2, and shall continue updating it from this point on, remaining in the 7.X branch until it's updated to a later version.</p>
+<p>Admittedly, I didn't notice any performance gains after I enabled opcache and set some values. Basically, opcache is a method of caching code in shared memory so PHP can reference that code without recompiling the script as it goes. So it'll refer to that code rather than the script itself, with certain values set such as when to refresh the cache and so forth.</p>
+<h2>Title Changes</h2>
+<p>Notice anything different in the title? Perhaps it's the addition of the Journal Entries title. Yep, I changed that, too.</p>
+<p>Going through my snippets with Kirby, I made some changes, one of which is a variable that can be set, which will tell the script to display the parent title along with the page and site titles, or not. On most of my pages, it's set to true. That is, as most of the pages are the journal entries at the moment. I may find a way to modify this later to allow for things like recursive display of the parent title. So, if I had a stories sub page, a story, and a chapter, it could go something like this.</p>
+<p>Variety Network | Stories | The Test Story | Chapter 1</p>
+<h2>The Cool Weather Is Here</h2>
+<p>Fall has arrived, or if you prefer, Autumn. This means cooler weather, and soon, a time change. Oh, joy.</p>
+<h2>Wrapping Things Up</h2>
+<p>Well, that's all I've got so far, can't think of much else to say. Accept, of course, to praise the Lord for the wonderful things I have to enjoy like shelter, the weather we've got, and the things I've been allowed to enjoy, even Kirby, this content management system. Why? Because I love playing around with it, but I wouldn't have that to do if the Lord hadn't created man kind in the first place.</p>
+<p>So, with that, enjoy, and have fun!</p>
+</div>
+
+</main>
+<footer class="footer cf">
+<h5>Footer</h5>
+<div class="copyright">
+<p>© 2009-2017 Variety Network</p>
+</div>
+<div class="colophon">
+<p><a href="http://getkirby.com/">Powered by Kirby version 2.5.5</a> and <a href="https://www.linode.com/">hosted by Linode.</a></p>
+</div>
+</footer>
+</body>
+</html>

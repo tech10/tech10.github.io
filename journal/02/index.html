@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Variety Network | Journal Entries | The Comment And Content Management Systems</title>
+<meta name="description" content="My articles, pages, and content about technology.">
+<meta name="keywords" content="technology, servers, articles">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<header class="header cf">
+<a class="logotext" href="/index.html">Variety Network</a>
+<nav>
+<h5>Navigation</h5>
+<ul class="menu cf">
+<li><a  href="/tt_tos/index.html">TeamTalk terms of service</a></li>
+<li><a  class="active" href="/journal/index.html">Journal Entries</a>
+<ul class="submenu">
+<li><a  href="/journal/01/index.html">My Spiritual Journey And The Technology Behind The Site</a></li>
+<li><a  class="active" href="/journal/02/index.html">The Comment And Content Management Systems</a></li>
+<li><a  href="/journal/03/index.html">TeamTalk Updates And Other Things</a></li>
+<li><a  href="/journal/04/index.html">Updates After A Long Time</a></li>
+<li><a  href="/journal/05/index.html">Exposure To Your Faults Is Difficult, Thunder Storms Are Great</a></li>
+<li><a  href="/journal/06/index.html">Changes to the Site and A New RSS Feed</a></li>
+<li><a  href="/journal/07/index.html">The Cost of Honesty</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5>Page Hierarchy</h5>
+<ul class="menu cf">
+<li><a href="/index.html">Home &rsaquo;</a></li>
+<li><a href="/journal/index.html">Journal Entries &rsaquo;</a></li>
+<li><a class="active" href="/journal/02/index.html">The Comment And Content Management Systems &rsaquo;</a></li>
+</ul>
+</nav>
+</header>
+<main class="main">
+<h1>The Comment And Content Management Systems</h1>
+<ul class="meta cf">
+<li><b>Author:</b> Blake G</li>
+<li><b>Published:</b> <time datetime="2014-11-11T05:10:00-07:00">Tuesday, November 11, 2014  05:10 AM</time></li>
+<li><b>Modified:</b> <time datetime="2015-09-05T21:00:00-06:00">Saturday, September 5, 2015  09:00 PM</time></li>
+</ul>
+<div class="text">
+<p>It's about 04:30 in the morning when I decided to start writing today. I'm a little tired, but it's nothing I can't deal with. My apartment is nice and quiet as usual, and I've spent about two hours or so reading about the comments system and a little about Kirby, the content management system, both of which I'll discuss more in detail.</p>
+<h2>Kirby, The Content Management System.</h2>
+<p>As I stated in my previous post, though briefly, Kirby is the content management system that powers my site and allows it to exist as it is. Though I could have written my own custom system, I found Kirby and found it to be quite easy to use. Content is written in html, plain text, a text formatting system called Markdown, or a few other languages. You can separate your text into various fields for ordering or different things, as I've done with the author, date, and modified date fields that I use. In fact, the modified date and author fields weren't written in the examples, so I had to place them in something called a template, which is a file written in another language called PHP. Kirby has some great documentation about its use, the API which is an interface for programmers, and various different things you can do to extend Kirby.</p>
+<h2>The Commenting System.</h2>
+<p>Originally, I thought about writing my own comment system, which would basically go like this. Each folder where my page text is stored would have a sub-folder created, called comments. I'd then have the approved and unapproved comments in JSON format. JSON is something used to read data and parse it in whatever manor you like, and to write that data back to a JSON format if you so chose. It's easy to work with between different programming languages, so that's what I was going to use. PHP already integrates JSON decoding and encoding into its core, so that would make it quite easy to manage.</p>
+<p>At any rate, the system was going to be very simple and streamlined. There would be form fields for your name, email, website, and a text field limited to, say, 2000 characters where you could enter your comment. Once you'd done this, you would submit the form and some invisible spam protection would happen to make sure I didn't receive much spam, if any at all. Writing it wouldn't be so bad, I suppose, but I decided not to invest my time in it. So instead, I used a system that already exists for use on sites.</p>
+<p><a href="https://www.disqus.com/">Disqus</a> is the system that I've decided to use. Kirby's blog uses it for comments, too, and from what I've seen it seems to work quite well. It allows for comment moderation, has spam protection, and other features that make it easy to work with and quite dynamic. Best of all, there's only a little bit of code you use to insert it into your site. Though they provide their own code which is written in JavaScript, they have an API. Basically, that means I could integrate it into my site however I wanted to and display the comments in whatever manor I wished. I could make it look like my site if I wanted to, and could probably allow it to operate without JavaScript if I wanted to, though I'm not entirely certain about that.</p>
+<p>I encourage feedback on this system. How do you think it looks, should I try and change it? Should I just go with my own system? Going with my own system at this point, however, would seem a little counter-productive if people started commenting. I could back the comments up and place them in my own system if I wanted to, but Disqus is quite reliable according to their claims, so I'll try them and see how it goes.</p>
+<p>Feel free to comment away, people, though keep some things in mind. If you are a guest, your email address will have to be approved before you can comment without being moderated, so your first comment might be moderated. And if someone flags your comments, which Disqus allows though I've not read up on it much yet, I'll be investigating things to find out why. I get emails at the moment with the way I've got things set up, and while I'm at work, I won't be approving anything. That'll have to wait until I get home.</p>
+<p>Also, as I indicated above, you'll need JavaScript enabled for my site in your browser. You can have a better experience by enabling cookies as well, though I'm not entirely certain what they do, probably to keep track of you as a visitor or something. The cookies are optional, but if you want to read and write comments, you'll need to enable JavaScript for my site and allow it for disqus.com as well.</p>
+<p>With that, have fun, everyone, and feel free to enjoy the site and my journal entries!</p>
+</div>
+
+</main>
+<footer class="footer cf">
+<h5>Footer</h5>
+<div class="copyright">
+<p>© 2009-2017 Variety Network</p>
+</div>
+<div class="colophon">
+<p><a href="http://getkirby.com/">Powered by Kirby version 2.5.5</a> and <a href="https://www.linode.com/">hosted by Linode.</a></p>
+</div>
+</footer>
+</body>
+</html>
